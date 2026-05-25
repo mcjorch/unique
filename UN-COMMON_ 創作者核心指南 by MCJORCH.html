@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///Users/kaybe/Downloads/gemini-code-1779711374916.html -->
+<html lang="zh-HK"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UN-COMMON: 創作者核心指南 by MCJORCH</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+HK:wght@300;500;700&family=Poppins:ital,wght@0,300;0,400;1,300&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Serif HK', serif;
+            background-color: #f4f4f4;
+            color: #1a1a1a;
+            line-height: 1.8;
+            -webkit-print-color-adjust: exact;
+        }
+
+        /* PDF 頁面尺寸控制 (A4) */
+        .pdf-page {
+            width: 210mm;
+            height: 297mm;
+            background: #ffffff;
+            margin: 20px auto;
+            padding: 25mm 20mm;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            page-break-after: always;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 📸 封面背景圖完美直連：加深黑度並提高暗部對比 */
+        .cover-bg {
+            background-image: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0.85) 0%, 
+                rgba(0, 0, 0, 0.75) 35%, 
+                rgba(0, 0, 0, 0.65) 65%, 
+                rgba(0, 0, 0, 0.80) 100%), 
+                url('https://lh3.googleusercontent.com/d/1JNWG_xeKS7UmebsP0csGjyyurF1tFM2_');
+        }
+
+        @media print {
+            body { background: none; }
+            .pdf-page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+
+        /* 品牌頂部橫條 */
+        .cover-bg .header-brand {
+            color: #bbb;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header-brand {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: #555;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 封面內容 - ⚡️ 核心文字防重疊清晰度優化 ⚡️ */
+        .cover-bg .cover-tag { 
+            color: #bbb; 
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+        }
+        
+        .cover-bg h1 { 
+            color: #fff; 
+            /* 複合式文字陰影：第一層清晰輪廓，第二層大範圍環境光壓暗 */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.5); 
+        }
+        
+        .cover-bg .subtitle { 
+            color: #e5e5e5; 
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 4px 15px rgba(0,0,0,0.4);
+        }
+        
+        .cover-bg .divider { 
+            background: #fff; 
+            box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        .cover-bg .quote { 
+            color: #dbdbdb; 
+            text-shadow: 0 1.5px 5px rgba(0,0,0,0.9), 0 3px 12px rgba(0,0,0,0.5); 
+        }
+        
+        .cover-bg .footer-brand { color: #aaa; }
+        .cover-bg .page-number { color: #aaa; }
+        .cover-bg .flex-footer { border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+        .cover-content {
+            margin-top: 30%;
+        }
+
+        .cover-tag {
+            font-size: 13px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #333;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: #000;
+            margin-bottom: 40px;
+        }
+
+        .quote {
+            font-size: 15px;
+            font-style: italic;
+            color: #555;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .footer-brand {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        /* 內頁樣式 */
+        .section-num {
+            font-size: 12px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.1em;
+            color: #888;
+            margin-top: 30px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .instruction {
+            font-size: 13px;
+            color: #666;
+            background: #f9f9f9;
+            padding: 15px 20px;
+            border-left: 2px solid #000;
+            margin-bottom: 35px;
+        }
+
+        .question-block {
+            margin-bottom: 40px;
+        }
+
+        .question-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #222;
+        }
+
+        .write-box {
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .box-lg { height: 120px; }
+        .box-sm { height: 45px; }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .matrix-table th {
+            background: #111;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 400;
+            padding: 12px;
+            text-align: left;
+            letter-spacing: 1px;
+        }
+
+        .matrix-table td {
+            border: 1px solid #e5e5e5;
+            padding: 15px;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        .example-text {
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .formula-card {
+            background: #111;
+            color: #fff;
+            padding: 25px;
+            border-radius: 4px;
+            margin-bottom: 35px;
+        }
+
+        .formula-card p {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        .formula-highlight {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .persona-fill-container {
+            width: 100%;
+            border: 1px dashed #999;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 30px 25px;
+            margin-top: 25px;
+        }
+
+        .formula-line {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .formula-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-underline {
+            display: inline-block;
+            border-bottom: 1px solid #999;
+            width: 320px;
+            margin-left: 8px;
+            margin-right: 8px;
+            vertical-align: bottom;
+            height: 24px;
+        }
+
+        .page-number {
+            font-size: 11px;
+            color: #999;
+            text-align: right;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .flex-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-top: 1px solid #eee;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pdf-page cover-bg">
+        <div class="header-brand">
+            <span>MCJORCH</span>
+            <span>CREATOR PROTOCOL // VOL. 01</span>
+        </div>
+        <div class="cover-content">
+            <div class="cover-tag">CREATOR CORE GUIDE</div>
+            <h1>UN-COMMON</h1>
+            <div class="subtitle">逼出你無可取代的獨特成分</div>
+            <div class="divider"></div>
+            <div class="quote">
+                "如果不想隨波逐流去複製公式，你必須直視自己靈魂裏最真實、甚至最突兀的那一面。"
+            </div>
+        </div>
+        <div class="flex-footer">
+            <div class="footer-brand">© MCJORCH. LIFE IS AMAZING.</div>
+            <div class="page-number">01</div>
+        </div>
+    </div>
+
+    <div class="pdf-page">
+        <div class="header-brand">
+            <span>MCJORCH // 創作者核心指南</span>
+            <span>STEP 01</span>
+        </div>
+        <div>
+            <div class="section-num">STEP 01</div>
+            <h2>直視自己（自我解剖表）</h2>
+            <div class="instruction">
+                <strong>💡 填寫指引：</strong>不要思考超過 3 秒，用第一直覺在下方的留白處寫下最赤裸的答案。
+            </div>
+
+            <div class="question-block">
+                <div class="question-title">1. 標籤背後的我：用 3 個看似「矛盾」的形容詞形容自己。</div>
+                <div class="example-text">（例如：野性、敏感、秩序感；或者：熱鬧、孤僻、完美主義）</div>
+                <div class="write-box box-sm"></div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-title">2. 脫水後的堅持：如果世界沒有「讚好」功能，你每天依然會默默做甚麼？</div>
+                <div class="example-text">（這件事就是你真正的熱情所在，也是你內容的「根」）</div>
+                <div class="write-box box-lg"></div>
+            </div>
+
+            <div class="question-block">
+                <div class="question-title">3. 陰暗面的超能力：你最害怕被別人看見、最想隱藏的怪癖是什麼？</div>
+                <div class="example-text">（不要怕，這個「不完美」往往就是鏡頭前最動人的真實面）</div>
+                <div class="write-box box-lg"></div>
+            </div>
+        </div>
+        <div class="flex-footer">
+            <div class="footer-brand">© MCJORCH. LIFE IS AMAZING.</div>
+            <div class="page-number">02</div>
+        </div>
+    </div>
+
+    <div class="pdf-page">
+        <div class="header-brand">
+            <span>MCJORCH // 創作者核心指南</span>
+            <span>STEP 02</span>
+        </div>
+        <div>
+            <div class="section-num">STEP 02</div>
+            <h2>找出反差（Contrast 矩陣）</h2>
+            <div class="instruction">
+                人用公式就會變平面，有反差先會立體。請嘗試將你大眾眼中的常態（A面），強力撞擊你隱藏的突兀點（B面），逼出衝突感。
+            </div>
+
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th style="width: 33%;">A 面：大眾眼中的我 / 常態</th>
+                        <th style="width: 33%;">B 面：隱藏的我 / 突兀點</th>
+                        <th style="width: 34%;">💥 撞擊出來的火花</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #fafafa;">
+                        <td>
+                            <span style="font-weight:700; font-size:12px; color:#666;">[範例]</span><br>
+                            坐在地上、外表反叛的捲髮文青
+                        </td>
+                        <td>
+                            <span style="font-weight:700; font-size:12px; color:#666;">[範例]</span><br>
+                            心思細密、熱愛大自然、會靜靜看荷花落水滴
+                        </td>
+                        <td>
+                            <span style="font-weight:700; font-size:12px; color:#aa7700;">[Unique Point]</span><br>
+                            <strong>「鬧市中的修行者」</strong><br>用最野性的外表講最溫柔內省的話。
+                        </td>
+                    </tr>
+                    <tr style="height: 220px;">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="flex-footer">
+            <div class="footer-brand">© MCJORCH. LIFE IS AMAZING.</div>
+            <div class="page-number">03</div>
+        </div>
+    </div>
+
+    <div class="pdf-page">
+        <div class="header-brand">
+            <span>MCJORCH // 創作者核心指南</span>
+            <span>STEP 03</span>
+        </div>
+        <div>
+            <div class="section-num">STEP 03</div>
+            <h2>角色具象化（Persona 放大鏡）</h2>
+            <div class="instruction">
+                Persona 不是做假，而是將你靈魂裏的某一塊「放大 10 倍」呈現給鏡頭。在平凡的日常場景，創造不平凡的記憶點。
+            </div>
+
+            <div class="formula-card">
+                <p>創意提煉核心公式：</p>
+                <div class="formula-highlight">[一個極端特質/怪癖] + [一個日常場景] = 讓人記住的記憶點</div>
+            </div>
+
+            <div class="question-block" style="margin-bottom: 25px;">
+                <div class="question-title" style="font-weight: 500;">參考範本：</div>
+                <div class="example-text" style="font-size:13px; color:#444; margin-bottom: 8px; font-style:normal;">
+                    • <strong>例一（文青/孤僻/鬧市）：</strong>戴着墨鏡、穿着復古襯衫，在最擠迫的旺角街頭慢動作游走的孤獨靈魂。
+                </div>
+                <div class="example-text" style="font-size:13px; color:#444; margin-bottom: 8px; font-style:normal;">
+                    • <strong>例二（野性/親近自然/日常）：</strong>在極度壓抑的城市辦公室裏，會突然跑去擁抱一棵大樹、甚至對着植物說話的野性怪咖。
+                </div>
+            </div>
+
+            <div class="question-block" style="margin-top: 35px;">
+                <div class="question-title">✍️ 寫下屬於你的 Persona 視覺記憶點：</div>
+                
+                <div class="persona-fill-container">
+                    <div class="formula-line">
+                        我會在 <span class="inline-underline"></span> [日常場景]，
+                    </div>
+                    <div class="formula-line">
+                        展現我最 <span class="inline-underline"></span> [極端特質/怪癖] 的那一面。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 10px; font-family: sans-serif;">
+                恭喜你完成了解剖。記得在 Instagram 標記我 <strong>@MCJORCH</strong>，分享你的 Unique Point。
+            </p>
+            <div class="flex-footer">
+                <div class="footer-brand" style="font-weight: 700; color: #000;">NOW, GO CREATE YOURS.</div>
+                <div class="page-number">04</div>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
